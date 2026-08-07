@@ -22,10 +22,10 @@ jobs:
 
     # Real PostGIS for the integration suite (unit tests don't touch it).
     services:
-      # Our own first-party image (fundistadi/postgis), published multi-arch to GHCR —
-      # identical PG17 + PostGIS on the amd64 runner and on arm64 dev machines.
+      # Official public PostGIS image (amd64 GitHub runners). Switch to
+      # ghcr.io/fundistadi/postgis:17 once that package is made public.
       postgres:
-        image: ghcr.io/fundistadi/postgis:17
+        image: postgis/postgis:17-3.5
         env:
           POSTGRES_USER: app
           POSTGRES_PASSWORD: app
