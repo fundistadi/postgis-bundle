@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Fundistadi\Postgis\Tests\Integration;
+namespace FundiStadi\Postgis\Tests\Integration;
 
 use Doctrine\Common\EventManager;
 use Doctrine\DBAL\Configuration as DbalConfiguration;
@@ -14,17 +14,17 @@ use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\ORMSetup;
 use Doctrine\ORM\Tools\SchemaTool;
 use Doctrine\ORM\Tools\ToolEvents;
-use Fundistadi\Postgis\ORM\Functions\StAsGeoJson;
-use Fundistadi\Postgis\ORM\Functions\StGeomFromGeoJson;
-use Fundistadi\Postgis\ORM\Functions\StIntersects;
-use Fundistadi\Postgis\Platform\PostGISMiddleware;
-use Fundistadi\Postgis\Schema\PostGISSchemaManagerFactory;
-use Fundistadi\Postgis\Schema\SpatialSchemaListener;
-use Fundistadi\Postgis\Types\GeographyType;
-use Fundistadi\Postgis\Types\GeometryType;
-use Fundistadi\Postgis\Types\MultiPolygonType;
-use Fundistadi\Postgis\Types\PointType;
-use Fundistadi\Postgis\Types\PolygonType;
+use FundiStadi\Postgis\ORM\Functions\StAsGeoJson;
+use FundiStadi\Postgis\ORM\Functions\StGeomFromGeoJson;
+use FundiStadi\Postgis\ORM\Functions\StIntersects;
+use FundiStadi\Postgis\Platform\PostGISMiddleware;
+use FundiStadi\Postgis\Schema\PostGISSchemaManagerFactory;
+use FundiStadi\Postgis\Schema\SpatialSchemaListener;
+use FundiStadi\Postgis\Types\GeographyType;
+use FundiStadi\Postgis\Types\GeometryType;
+use FundiStadi\Postgis\Types\MultiPolygonType;
+use FundiStadi\Postgis\Types\PointType;
+use FundiStadi\Postgis\Types\PolygonType;
 use PHPUnit\Framework\TestCase;
 
 /**

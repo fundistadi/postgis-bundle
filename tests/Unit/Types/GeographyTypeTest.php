@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Fundistadi\Postgis\Tests\Unit\Types;
+namespace FundiStadi\Postgis\Tests\Unit\Types;
 
 use Doctrine\DBAL\Platforms\PostgreSQLPlatform;
 use Doctrine\DBAL\Types\Type;
-use Fundistadi\Postgis\Types\GeographyType;
+use FundiStadi\Postgis\Types\GeographyType;
 use PHPUnit\Framework\TestCase;
 
 final class GeographyTypeTest extends TestCase

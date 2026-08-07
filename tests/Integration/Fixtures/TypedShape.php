@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Fundistadi\Postgis\Tests\Integration\Fixtures;
+namespace FundiStadi\Postgis\Tests\Integration\Fixtures;
 
 use Doctrine\ORM\Mapping as ORM;
 

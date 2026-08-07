@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Fundistadi\Postgis\Tests\Integration;
+namespace FundiStadi\Postgis\Tests\Integration;
 
 use Doctrine\ORM\Tools\SchemaTool;
-use Fundistadi\Postgis\Types\GeometryType;
-use Fundistadi\Postgis\Types\MultiPolygonType;
+use FundiStadi\Postgis\Types\GeometryType;
+use FundiStadi\Postgis\Types\MultiPolygonType;
 
 final class SchemaDiffTest extends PostgisIntegrationTestCase
 {

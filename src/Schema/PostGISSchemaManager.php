@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Fundistadi\Postgis\Schema;
+namespace FundiStadi\Postgis\Schema;
 
 use Doctrine\DBAL\Schema\Column;
 use Doctrine\DBAL\Schema\PostgreSQLSchemaManager;

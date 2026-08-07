@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Fundistadi\Postgis\Types;
+namespace FundiStadi\Postgis\Types;
 
 /**
  * PostGIS `geography` column (spheroidal calculations), exchanged as GeoJSON text.

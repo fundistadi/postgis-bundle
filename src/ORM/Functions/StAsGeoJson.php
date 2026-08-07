@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Fundistadi\Postgis\ORM\Functions;
+namespace FundiStadi\Postgis\ORM\Functions;
 
 /**
  * DQL: ST_AsGeoJSON(geom [, maxdecimaldigits [, options]]) — GeoJSON text of a geometry.
