@@ -22,10 +22,10 @@ jobs:
 
     # Real PostGIS for the integration suite (unit tests don't touch it).
     services:
-      # GitHub runners are amd64, where the official PostGIS image works. (Local dev on
-      # Apple Silicon builds the arm64 fundistadi/postgis; both are PG17 + PostGIS 3.x.)
+      # Our own first-party image (fundistadi/postgis), published multi-arch to GHCR —
+      # identical PG17 + PostGIS on the amd64 runner and on arm64 dev machines.
       postgres:
-        image: postgis/postgis:17-3.5
+        image: ghcr.io/fundistadi/postgis:17
         env:
           POSTGRES_USER: app
           POSTGRES_PASSWORD: app
