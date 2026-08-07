@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace FundiStadi\Postgis\Tests\Integration;
+namespace FundiStadi\PostGIS\Tests\Integration;
 
-use FundiStadi\Postgis\Tests\Integration\Fixtures\SpatialThing;
+use FundiStadi\PostGIS\Tests\Integration\Fixtures\SpatialThing;
 
-final class SpatialIntegrationTest extends PostgisIntegrationTestCase
+final class SpatialIntegrationTest extends PostGISIntegrationTestCase
 {
     public function testGeometryColumnGetsAGistIndex(): void
     {

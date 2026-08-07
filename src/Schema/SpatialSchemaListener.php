@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace FundiStadi\Postgis\Schema;
+namespace FundiStadi\PostGIS\Schema;
 
 use Doctrine\ORM\Tools\Event\GenerateSchemaEventArgs;
-use FundiStadi\Postgis\Types\GeometryType;
+use FundiStadi\PostGIS\Types\GeometryType;
 
 /**
  * Adds a GiST index for every geometry/geography column when the schema is
  * generated (ORM `postGenerateSchema`). The index is marked with the `spatial`
- * flag; {@see \FundiStadi\Postgis\Platform\PostGISPlatform} turns that into
+ * flag; {@see \FundiStadi\PostGIS\Platform\PostGISPlatform} turns that into
  * `USING gist` (DBAL 4 ignores the flag on its own).
  *
  * Result: consumers get correct spatial indexes from `doctrine:migrations:diff`

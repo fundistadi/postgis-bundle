@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace FundiStadi\Postgis\ORM\Functions;
+namespace FundiStadi\PostGIS\ORM\Functions;
 
 use Doctrine\ORM\Query\AST\Functions\FunctionNode;
 use Doctrine\ORM\Query\AST\Node;

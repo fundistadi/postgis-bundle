@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace FundiStadi\Postgis\Tests\Integration;
+namespace FundiStadi\PostGIS\Tests\Integration;
 
 use Doctrine\Common\EventManager;
 use Doctrine\DBAL\Configuration as DbalConfiguration;
@@ -14,17 +14,17 @@ use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\ORMSetup;
 use Doctrine\ORM\Tools\SchemaTool;
 use Doctrine\ORM\Tools\ToolEvents;
-use FundiStadi\Postgis\ORM\Functions\StAsGeoJson;
-use FundiStadi\Postgis\ORM\Functions\StGeomFromGeoJson;
-use FundiStadi\Postgis\ORM\Functions\StIntersects;
-use FundiStadi\Postgis\Platform\PostGISMiddleware;
-use FundiStadi\Postgis\Schema\PostGISSchemaManagerFactory;
-use FundiStadi\Postgis\Schema\SpatialSchemaListener;
-use FundiStadi\Postgis\Types\GeographyType;
-use FundiStadi\Postgis\Types\GeometryType;
-use FundiStadi\Postgis\Types\MultiPolygonType;
-use FundiStadi\Postgis\Types\PointType;
-use FundiStadi\Postgis\Types\PolygonType;
+use FundiStadi\PostGIS\ORM\Functions\StAsGeoJson;
+use FundiStadi\PostGIS\ORM\Functions\StGeomFromGeoJson;
+use FundiStadi\PostGIS\ORM\Functions\StIntersects;
+use FundiStadi\PostGIS\Platform\PostGISMiddleware;
+use FundiStadi\PostGIS\Schema\PostGISSchemaManagerFactory;
+use FundiStadi\PostGIS\Schema\SpatialSchemaListener;
+use FundiStadi\PostGIS\Types\GeographyType;
+use FundiStadi\PostGIS\Types\GeometryType;
+use FundiStadi\PostGIS\Types\MultiPolygonType;
+use FundiStadi\PostGIS\Types\PointType;
+use FundiStadi\PostGIS\Types\PolygonType;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -33,7 +33,7 @@ use PHPUnit\Framework\TestCase;
  * the middleware (PostGISPlatform), the spatial types, the ST_* DQL functions,
  * and the schema listener — i.e. everything the bundle wires in an app.
  */
-abstract class PostgisIntegrationTestCase extends TestCase
+abstract class PostGISIntegrationTestCase extends TestCase
 {
     protected EntityManagerInterface $em;
 

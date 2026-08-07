@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace FundiStadi\Postgis\Tests\Integration;
+namespace FundiStadi\PostGIS\Tests\Integration;
 
 use Doctrine\ORM\Tools\SchemaTool;
-use FundiStadi\Postgis\Types\GeometryType;
-use FundiStadi\Postgis\Types\MultiPolygonType;
+use FundiStadi\PostGIS\Types\GeometryType;
+use FundiStadi\PostGIS\Types\MultiPolygonType;
 
-final class SchemaDiffTest extends PostgisIntegrationTestCase
+final class SchemaDiffTest extends PostGISIntegrationTestCase
 {
     public function testTypedColumnGetsTheTypmod(): void
     {

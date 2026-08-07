@@ -19,12 +19,12 @@
     },
     "autoload": {
         "psr-4": {
-            "FundiStadi\\Postgis\\": "src/"
+            "FundiStadi\\PostGIS\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "FundiStadi\\Postgis\\Tests\\": "tests/"
+            "FundiStadi\\PostGIS\\Tests\\": "tests/"
         }
     },
     "require-dev": {

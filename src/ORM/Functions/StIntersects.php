@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace FundiStadi\Postgis\ORM\Functions;
+namespace FundiStadi\PostGIS\ORM\Functions;
 
 /**
  * DQL: ST_Intersects(a, b) — true when the two geometries spatially intersect.
