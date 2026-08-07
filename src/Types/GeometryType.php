@@ -28,6 +28,12 @@ class GeometryType extends Type
         return 'geometry';
     }
 
+    /** Default geometry kind for the declaration; typed sub-types override this. */
+    protected function defaultGeometryType(): string
+    {
+        return 'GEOMETRY';
+    }
+
     /** SQL used to turn a stored value into the PHP (GeoJSON) representation on read. */
     protected function toGeoJsonSql(string $sqlExpr): string
     {
@@ -45,8 +51,8 @@ class GeometryType extends Type
      */
     public function getSQLDeclaration(array $column, AbstractPlatform $platform): string
     {
-        $rawType = $column['geometry_type'] ?? 'GEOMETRY';
-        $geometryType = strtoupper(\is_string($rawType) ? $rawType : 'GEOMETRY');
+        $rawType = $column['geometry_type'] ?? $this->defaultGeometryType();
+        $geometryType = strtoupper(\is_string($rawType) ? $rawType : $this->defaultGeometryType());
 
         $rawSrid = $column['srid'] ?? 4326;
         $srid = is_numeric($rawSrid) ? (int) $rawSrid : 4326;
