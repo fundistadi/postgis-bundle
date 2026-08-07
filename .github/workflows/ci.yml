@@ -1,0 +1,68 @@
+name: CI
+
+# Gatekeeper: every push and pull request must pass the full standard
+# (code style -> static analysis -> tests) before a PR is valid for maintainer review.
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    name: Standard gate (PHP ${{ matrix.php }})
+    runs-on: ubuntu-latest
+
+    strategy:
+      fail-fast: false
+      matrix:
+        php: ['8.4']
+
+    # Real PostGIS for the integration suite (unit tests don't touch it).
+    services:
+      # GitHub runners are amd64, where the official PostGIS image works. (Local dev on
+      # Apple Silicon builds the arm64 fundistadi/postgis; both are PG17 + PostGIS 3.x.)
+      postgres:
+        image: postgis/postgis:17-3.5
+        env:
+          POSTGRES_USER: app
+          POSTGRES_PASSWORD: app
+          POSTGRES_DB: app_test
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U app"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
+    env:
+      DATABASE_URL: "postgresql://app:app@127.0.0.1:5432/app_test?serverVersion=17&charset=utf8"
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php }}
+          extensions: ctype, iconv, pdo_pgsql
+          coverage: none
+          tools: composer:v2
+
+      - name: Validate composer.json
+        run: composer validate --strict
+
+      - name: Install dependencies
+        run: composer install --no-interaction --no-progress --prefer-dist
+
+      - name: Code style (php-cs-fixer)
+        run: composer cs:check
+
+      - name: Static analysis (PHPStan max)
+        run: composer phpstan
+
+      - name: Tests (PHPUnit)
+        run: composer test

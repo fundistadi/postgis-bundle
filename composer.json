@@ -1,0 +1,59 @@
+{
+    "name": "fundistadi/fundi-postgis",
+    "description": "PostGIS spatial types, automatic GiST indexing, and ST_* DQL functions for Doctrine ORM 3 / DBAL 4 on Symfony.",
+    "type": "symfony-bundle",
+    "keywords": ["postgis", "postgresql", "doctrine", "dbal", "orm", "spatial", "gis", "geometry", "geojson", "symfony"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Ezekiel Emil Mjema",
+            "homepage": "https://github.com/fundistadi"
+        }
+    ],
+    "require": {
+        "php": ">=8.4",
+        "doctrine/dbal": "^4.0",
+        "doctrine/orm": "^3.0",
+        "doctrine/doctrine-bundle": "^3.0",
+        "symfony/framework-bundle": "^7.3 || ^8.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Fundistadi\\Postgis\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Fundistadi\\Postgis\\Tests\\": "tests/"
+        }
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^13.2",
+        "friendsofphp/php-cs-fixer": "^3.95",
+        "phpstan/phpstan": "^2.2"
+    },
+    "scripts": {
+        "cs:fix": "php-cs-fixer fix",
+        "cs:check": "php-cs-fixer fix --dry-run --diff",
+        "phpstan": "phpstan analyse --no-progress --memory-limit=1G",
+        "test": "phpunit",
+        "check": [
+            "@cs:check",
+            "@phpstan",
+            "@test"
+        ]
+    },
+    "config": {
+        "allow-plugins": {
+            "php-http/discovery": true
+        },
+        "sort-packages": true
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-main": "0.1-dev"
+        }
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true
+}
