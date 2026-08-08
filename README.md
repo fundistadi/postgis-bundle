@@ -78,7 +78,7 @@ stay `migrations:diff`-clean.
 ## Requirements
 
 - PHP **8.4+** · Symfony **7.3+ / 8**
-- `doctrine/dbal` **^4**, `doctrine/orm` **^3.4**, `doctrine/doctrine-bundle` **^3**
+- `doctrine/dbal` **^4**, `doctrine/orm` **^3.5**, `doctrine/doctrine-bundle` **^3**
 - PostgreSQL with the **PostGIS** extension
 
 ## Contributing
