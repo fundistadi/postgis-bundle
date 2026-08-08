@@ -1,6 +1,6 @@
 # PostGIS for Symfony!
 
-[![CI](https://github.com/fundistadi/FundiStadiPostGISBundle/actions/workflows/ci.yml/badge.svg)](https://github.com/fundistadi/FundiStadiPostGISBundle/actions/workflows/ci.yml)
+[![CI](https://github.com/fundistadi/postgis-bundle/actions/workflows/ci.yml/badge.svg)](https://github.com/fundistadi/postgis-bundle/actions/workflows/ci.yml)
 [![Latest Version](https://img.shields.io/packagist/v/fundistadi/postgis-bundle.svg)](https://packagist.org/packages/fundistadi/postgis-bundle)
 [![Total Downloads](https://img.shields.io/packagist/dt/fundistadi/postgis-bundle.svg)](https://packagist.org/packages/fundistadi/postgis-bundle)
 [![License](https://img.shields.io/packagist/l/fundistadi/postgis-bundle.svg)](LICENSE)
@@ -10,7 +10,7 @@ types exchanged as **GeoJSON**, `ST_*` DQL functions, **automatic GiST indexing*
 **typed geometry columns with churn-free migrations** — no hand-written spatial SQL,
 no configuration. Enable the bundle and go.
 
-> Part of [FundiStadi](https://github.com/fundistadi) — well-crafted Symfony & PostgreSQL tools.
+> Part of [FundiStadi](https://github.com/fundistadi) — open-source tooling for web, ops & data.
 
 ## Why
 
@@ -89,7 +89,7 @@ PHPUnit against real PostGIS, lowest→newest dependency matrix) on every pull r
 ## Credits
 
 - [Ezekiel Mjema](https://github.com/eemjema)
-- [All Contributors](https://github.com/fundistadi/FundiStadiPostGISBundle/graphs/contributors)
+- [All Contributors](https://github.com/fundistadi/postgis-bundle/graphs/contributors)
 
 ## License
 
