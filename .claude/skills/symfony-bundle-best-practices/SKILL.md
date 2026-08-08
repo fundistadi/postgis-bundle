@@ -11,7 +11,7 @@ Condensed from https://symfony.com/doc/current/bundles/best_practices.html — b
 
 - Bundle class: `<Vendor><Name>Bundle`, StudlyCaps, name descriptive and short (max two words). Example: namespace `Acme\BlogBundle` → class `AcmeBlogBundle`. For us: vendor `FundiStadi`.
 - Bundle alias: lowercase underscore version of the class name minus `Bundle` (e.g. `acme_blog`). Used as the prefix for **all** routes, services, and parameters. If the auto-derived alias (Container::underscore) is not what you want, set `protected string $extensionAlias` explicitly on the bundle class.
-- Public repository name: the official doc says the bundle class name (`AcmeBlogBundle`), but this org deliberately follows the modern SymfonyCasts/Zenstruck style instead — repo name = the kebab-case package short name, so repo and Packagist line up (`fundistadi/postgis-bundle`, like `SymfonyCasts/tailwind-bundle`).
+- Public repository name: this org's convention is repo name = the kebab-case package short name, so the GitHub URL and the Packagist name line up exactly (`fundistadi/postgis-bundle`). The vendor prefix would be redundant inside the org. (Deliberate deviation from the official doc's "repo = bundle class name".)
 - composer.json `name`: `vendor/<name>-bundle` — drop the vendor prefix from the class name, kebab-case, append `-bundle` (`AcmeBlogBundle` → `acme/blog-bundle`).
 - Exception classes go in an `Exception` sub-namespace; event-dispatcher classes end in `Listener`.
 
