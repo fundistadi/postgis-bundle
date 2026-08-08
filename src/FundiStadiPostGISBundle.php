@@ -2,19 +2,19 @@
 
 declare(strict_types=1);
 
-namespace FundiStadi\PostGIS;
+namespace FundiStadi\PostGISBundle;
 
-use FundiStadi\PostGIS\ORM\Functions\StAsGeoJson;
-use FundiStadi\PostGIS\ORM\Functions\StGeomFromGeoJson;
-use FundiStadi\PostGIS\ORM\Functions\StIntersects;
-use FundiStadi\PostGIS\Platform\PostGISMiddleware;
-use FundiStadi\PostGIS\Schema\PostGISSchemaManagerFactory;
-use FundiStadi\PostGIS\Schema\SpatialSchemaListener;
-use FundiStadi\PostGIS\Types\GeographyType;
-use FundiStadi\PostGIS\Types\GeometryType;
-use FundiStadi\PostGIS\Types\MultiPolygonType;
-use FundiStadi\PostGIS\Types\PointType;
-use FundiStadi\PostGIS\Types\PolygonType;
+use FundiStadi\PostGISBundle\EventListener\SpatialSchemaListener;
+use FundiStadi\PostGISBundle\ORM\Functions\StAsGeoJson;
+use FundiStadi\PostGISBundle\ORM\Functions\StGeomFromGeoJson;
+use FundiStadi\PostGISBundle\ORM\Functions\StIntersects;
+use FundiStadi\PostGISBundle\Platform\PostGISMiddleware;
+use FundiStadi\PostGISBundle\Schema\PostGISSchemaManagerFactory;
+use FundiStadi\PostGISBundle\Types\GeographyType;
+use FundiStadi\PostGISBundle\Types\GeometryType;
+use FundiStadi\PostGISBundle\Types\MultiPolygonType;
+use FundiStadi\PostGISBundle\Types\PointType;
+use FundiStadi\PostGISBundle\Types\PolygonType;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
 use Symfony\Component\HttpKernel\Bundle\AbstractBundle;
@@ -25,9 +25,13 @@ use Symfony\Component\HttpKernel\Bundle\AbstractBundle;
  * middleware, the typmod-aware schema manager (clean diffs), and the auto-GiST
  * schema listener. Just add the bundle.
  */
-final class FundiPostGISBundle extends AbstractBundle
+final class FundiStadiPostGISBundle extends AbstractBundle
 {
-    private const SCHEMA_MANAGER_FACTORY_ID = 'fundi_postgis.schema_manager_factory';
+    protected string $extensionAlias = 'fundi_stadi_post_gis';
+
+    // Leading dot: internal services, hidden from `debug:container` (Symfony
+    // bundle best practice for services not meant to be used by the app).
+    private const SCHEMA_MANAGER_FACTORY_ID = '.fundi_stadi_post_gis.schema_manager_factory';
 
     public function prependExtension(ContainerConfigurator $container, ContainerBuilder $builder): void
     {
@@ -71,10 +75,10 @@ final class FundiPostGISBundle extends AbstractBundle
 
         $services->set(self::SCHEMA_MANAGER_FACTORY_ID, PostGISSchemaManagerFactory::class);
 
-        $services->set('fundi_postgis.middleware', PostGISMiddleware::class)
+        $services->set('.fundi_stadi_post_gis.middleware', PostGISMiddleware::class)
             ->tag('doctrine.middleware');
 
-        $services->set('fundi_postgis.schema_listener', SpatialSchemaListener::class)
+        $services->set('.fundi_stadi_post_gis.schema_listener', SpatialSchemaListener::class)
             ->tag('doctrine.event_listener', ['event' => 'postGenerateSchema']);
     }
 }

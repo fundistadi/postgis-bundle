@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace FundiStadi\PostGIS\Schema;
+namespace FundiStadi\PostGISBundle\Schema;
 
 use Doctrine\DBAL\Connection;
 use Doctrine\DBAL\Platforms\PostgreSQLPlatform;

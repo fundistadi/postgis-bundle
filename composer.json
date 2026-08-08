@@ -1,5 +1,5 @@
 {
-    "name": "fundistadi/fundi-postgis",
+    "name": "fundistadi/postgis-bundle",
     "description": "PostGIS spatial types, automatic GiST indexing, and ST_* DQL functions for Doctrine ORM 3 / DBAL 4 on Symfony.",
     "type": "symfony-bundle",
     "keywords": ["postgis", "postgresql", "doctrine", "dbal", "orm", "spatial", "gis", "geometry", "geojson", "symfony"],
@@ -7,7 +7,7 @@
     "authors": [
         {
             "name": "Ezekiel Mjema",
-            "homepage": "https://github.com/fundistadi"
+            "homepage": "https://github.com/eemjema"
         }
     ],
     "require": {
@@ -19,12 +19,12 @@
     },
     "autoload": {
         "psr-4": {
-            "FundiStadi\\PostGIS\\": "src/"
+            "FundiStadi\\PostGISBundle\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "FundiStadi\\PostGIS\\Tests\\": "tests/"
+            "FundiStadi\\PostGISBundle\\Tests\\": "tests/"
         }
     },
     "require-dev": {

@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace FundiStadi\PostGIS\Tests\Functional;
+namespace FundiStadi\PostGISBundle\Tests\Functional;
 
 use Doctrine\Bundle\DoctrineBundle\DoctrineBundle;
-use FundiStadi\PostGIS\FundiPostGISBundle;
+use FundiStadi\PostGISBundle\FundiStadiPostGISBundle;
 use Symfony\Bundle\FrameworkBundle\FrameworkBundle;
 use Symfony\Bundle\FrameworkBundle\Kernel\MicroKernelTrait;
 use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
@@ -21,7 +21,7 @@ final class TestKernel extends Kernel
         return [
             new FrameworkBundle(),
             new DoctrineBundle(),
-            new FundiPostGISBundle(),
+            new FundiStadiPostGISBundle(),
         ];
     }
 
@@ -32,12 +32,12 @@ final class TestKernel extends Kernel
 
     public function getCacheDir(): string
     {
-        return sys_get_temp_dir().'/fundi_postgis/cache/'.$this->environment;
+        return sys_get_temp_dir().'/fundi_stadi_post_gis/cache/'.$this->environment;
     }
 
     public function getLogDir(): string
     {
-        return sys_get_temp_dir().'/fundi_postgis/log';
+        return sys_get_temp_dir().'/fundi_stadi_post_gis/log';
     }
 
     protected function configureContainer(ContainerConfigurator $container): void
@@ -60,7 +60,7 @@ final class TestKernel extends Kernel
                     'Fixtures' => [
                         'type' => 'attribute',
                         'dir' => \dirname(__DIR__).'/Integration/Fixtures',
-                        'prefix' => 'FundiStadi\\PostGIS\\Tests\\Integration\\Fixtures',
+                        'prefix' => 'FundiStadi\\PostGISBundle\\Tests\\Integration\\Fixtures',
                         'is_bundle' => false,
                     ],
                 ],

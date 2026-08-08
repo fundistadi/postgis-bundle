@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace FundiStadi\PostGIS\Tests\Unit\Types;
+namespace FundiStadi\PostGISBundle\Tests\Unit\Types;
 
 use Doctrine\DBAL\Platforms\PostgreSQLPlatform;
 use Doctrine\DBAL\Types\Type;
-use FundiStadi\PostGIS\Types\GeometryType;
+use FundiStadi\PostGISBundle\Types\GeometryType;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace FundiStadi\PostGIS\Platform;
+namespace FundiStadi\PostGISBundle\Platform;
 
 use Doctrine\DBAL\Platforms\PostgreSQLPlatform;
 use Doctrine\DBAL\Schema\Index;

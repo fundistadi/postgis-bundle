@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace FundiStadi\PostGIS\ORM\Functions;
+namespace FundiStadi\PostGISBundle\ORM\Functions;
 
 /**
  * DQL: ST_GeomFromGeoJSON(text) — builds a geometry (SRID 4326) from GeoJSON text.

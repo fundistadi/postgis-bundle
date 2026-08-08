@@ -1,38 +1,39 @@
-# fundi-postgis
+# PostGIS for Symfony!
 
-First-class **PostGIS** support for **Doctrine ORM 3 / DBAL 4** on **Symfony** — spatial
-types exchanged as GeoJSON, `ST_*` DQL functions, **automatic GiST indexing**, and
-**typed geometry columns with churn-free migrations**. Enable the bundle and go.
+[![CI](https://github.com/fundistadi/FundiStadiPostGISBundle/actions/workflows/ci.yml/badge.svg)](https://github.com/fundistadi/FundiStadiPostGISBundle/actions/workflows/ci.yml)
+[![Latest Version](https://img.shields.io/packagist/v/fundistadi/postgis-bundle.svg)](https://packagist.org/packages/fundistadi/postgis-bundle)
+[![Total Downloads](https://img.shields.io/packagist/dt/fundistadi/postgis-bundle.svg)](https://packagist.org/packages/fundistadi/postgis-bundle)
+[![License](https://img.shields.io/packagist/l/fundistadi/postgis-bundle.svg)](LICENSE)
 
-> Part of the [Fundistadi](https://github.com/fundistadi) toolset.
+This bundle gives Doctrine ORM 3 / DBAL 4 first-class **PostGIS** support: spatial column
+types exchanged as **GeoJSON**, `ST_*` DQL functions, **automatic GiST indexing**, and
+**typed geometry columns with churn-free migrations** — no hand-written spatial SQL,
+no configuration. Enable the bundle and go.
+
+> Part of the [FundiStadi](https://github.com/fundistadi) toolset.
 
 ## Why
 
 Doctrine ships no spatial types, and PostGIS stores every shape as the base `geometry`
 type — so the usual approaches either hand-write DDL or fight `migrations:diff` churn.
-`fundi-postgis` handles all of it: declare a column, get a GiST-indexed, GeoJSON-friendly,
+This bundle handles all of it: declare a column, get a GiST-indexed, GeoJSON-friendly,
 optionally shape-constrained column with clean diffs.
-
-## Requirements
-
-- PHP **8.4+**
-- `doctrine/dbal` **^4**, `doctrine/orm` **^3**, `doctrine/doctrine-bundle` **^3**
-- Symfony **7.3+ / 8**
-- PostgreSQL with the **PostGIS** extension
 
 ## Install
 
-```bash
-composer require fundistadi/fundi-postgis
+Applications using [Symfony Flex](https://symfony.com/doc/current/setup.html):
+
+```console
+composer require fundistadi/postgis-bundle
 ```
 
-Enable the bundle:
+Applications without Symfony Flex — after requiring the package, enable the bundle:
 
 ```php
 // config/bundles.php
 return [
     // ...
-    FundiStadi\PostGIS\FundiPostGISBundle::class => ['all' => true],
+    FundiStadi\PostGISBundle\FundiStadiPostGISBundle::class => ['all' => true],
 ];
 ```
 
@@ -40,9 +41,7 @@ That one line registers the spatial types, the DB-type mappings, the `ST_*` DQL 
 the `USING gist` platform middleware, the typmod-aware schema manager, and the auto-GiST
 schema listener. Nothing else to configure.
 
-## Usage
-
-### Columns
+## A taste
 
 ```php
 use Doctrine\ORM\Mapping as ORM;
@@ -59,20 +58,6 @@ class Area
 }
 ```
 
-Values are plain **GeoJSON strings** both ways:
-
-```php
-$area->boundary = '{"type":"MultiPolygon","coordinates":[[[[36,-4],[37,-4],[37,-3],[36,-3],[36,-4]]]]}';
-$em->persist($area);
-$em->flush();
-// $reloaded->boundary === '{"type":"MultiPolygon", ... }'
-```
-
-Available column types: `geometry`, `geography`, `point`, `polygon`, `multipolygon`
-(more shape sub-types are trivial to add — see `src/Types`).
-
-### Spatial queries (DQL)
-
 ```php
 $em->createQuery(
     'SELECT COUNT(a.id) FROM App\Entity\Area a
@@ -80,28 +65,32 @@ $em->createQuery(
 )->setParameter('poly', $geoJsonPolygon)->getSingleScalarResult();
 ```
 
-Registered functions: `ST_AsGeoJSON`, `ST_GeomFromGeoJSON`, `ST_Intersects`.
+Column types: `geometry`, `geography`, `point`, `polygon`, `multipolygon`.
+DQL functions: `ST_AsGeoJSON`, `ST_GeomFromGeoJSON`, `ST_Intersects`.
+Every geometry/geography column gets a `USING gist` index in generated migrations, automatically.
 
-### Automatic GiST indexes
+## Documentation
 
-Every geometry/geography column gets a `USING gist` index automatically in the generated
-schema and migrations — no hand-written DDL.
+Read the documentation at [docs/index.md](docs/index.md) — including
+[generic vs. typed geometry columns](docs/geometry-columns.md) and how typed columns
+stay `migrations:diff`-clean.
 
-## Generic vs. typed columns
+## Requirements
 
-| | `geometry` | `multipolygon` (typed) |
-|---|---|---|
-| SRID enforced | ✅ | ✅ |
-| Shape enforced by the DB | ❌ (any shape) | ✅ `geometry(MultiPolygon,4326)` |
-| `migrations:diff` clean | ✅ | ✅ (typmod-aware schema manager) |
-
-See [`docs/geometry-columns.md`](docs/geometry-columns.md) for the details.
+- PHP **8.4+** · Symfony **7.3+ / 8**
+- `doctrine/dbal` **^4**, `doctrine/orm` **^3**, `doctrine/doctrine-bundle` **^3**
+- PostgreSQL with the **PostGIS** extension
 
 ## Contributing
 
 See [CONTRIBUTING.md](CONTRIBUTING.md). CI enforces the standard (php-cs-fixer, PHPStan max,
-PHPUnit against real PostGIS) on every pull request.
+PHPUnit against real PostGIS, lowest→newest dependency matrix) on every pull request.
+
+## Credits
+
+- [Ezekiel Mjema](https://github.com/eemjema)
+- [All Contributors](https://github.com/fundistadi/FundiStadiPostGISBundle/graphs/contributors)
 
 ## License
 
-MIT.
+MIT License (MIT): see the [LICENSE](LICENSE) file for more details.

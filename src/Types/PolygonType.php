@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace FundiStadi\PostGIS\Types;
+namespace FundiStadi\PostGISBundle\Types;
 
 use Doctrine\DBAL\Platforms\AbstractPlatform;
 

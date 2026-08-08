@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace FundiStadi\PostGIS\Tests\Functional;
+namespace FundiStadi\PostGISBundle\Tests\Functional;
 
 use Doctrine\DBAL\Connection;
 use Doctrine\DBAL\Types\Type;
-use FundiStadi\PostGIS\Platform\PostGISPlatform;
-use FundiStadi\PostGIS\Schema\PostGISSchemaManager;
+use FundiStadi\PostGISBundle\Platform\PostGISPlatform;
+use FundiStadi\PostGISBundle\Schema\PostGISSchemaManager;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 
 /**

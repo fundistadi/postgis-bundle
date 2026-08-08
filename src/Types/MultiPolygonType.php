@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace FundiStadi\PostGIS\Types;
+namespace FundiStadi\PostGISBundle\Types;
 
 use Doctrine\DBAL\Platforms\AbstractPlatform;
 
 /**
  * `geometry(MultiPolygon, 4326)` — PostGIS enforces the shape via the typmod.
- * Diffs stay clean thanks to {@see \FundiStadi\PostGIS\Schema\PostGISSchemaManager}.
+ * Diffs stay clean thanks to {@see \FundiStadi\PostGISBundle\Schema\PostGISSchemaManager}.
  */
 final class MultiPolygonType extends GeometryType
 {

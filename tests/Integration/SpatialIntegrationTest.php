@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace FundiStadi\PostGIS\Tests\Integration;
+namespace FundiStadi\PostGISBundle\Tests\Integration;
 
-use FundiStadi\PostGIS\Tests\Integration\Fixtures\SpatialThing;
+use FundiStadi\PostGISBundle\Tests\Integration\Fixtures\SpatialThing;
 
 final class SpatialIntegrationTest extends PostGISIntegrationTestCase
 {

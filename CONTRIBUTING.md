@@ -1,4 +1,4 @@
-# Contributing to fundi-postgis
+# Contributing to FundiStadiPostGISBundle
 
 Thanks for your interest! This project holds a high, automated bar so maintainers can
 review with confidence. **CI is a gatekeeper: a pull request is only considered for review
@@ -28,6 +28,6 @@ every push and pull request. A PR that does not pass CI will not be reviewed unt
 
 ## Scope
 
-`fundi-postgis` is a **generic** PostGIS integration for Doctrine/Symfony. Please keep it
+`FundiStadiPostGISBundle` is a **generic** PostGIS integration for Doctrine/Symfony. Please keep it
 free of application- or domain-specific code. Bug fixes, new `ST_*` functions with tests,
 and documentation improvements are all welcome.
