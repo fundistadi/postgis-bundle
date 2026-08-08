@@ -55,6 +55,7 @@ final class TestKernel extends Kernel
                 'url' => '%env(DATABASE_URL)%',
             ],
             'orm' => [
+                'enable_native_lazy_objects' => true,
                 'controller_resolver' => ['auto_mapping' => false],
                 'mappings' => [
                     'Fixtures' => [

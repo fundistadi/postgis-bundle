@@ -29,7 +29,7 @@ middleware, the typmod-aware schema manager, and the auto-GiST schema listener.
 ## Requirements
 
 - PHP **8.4+**
-- `doctrine/dbal` **^4**, `doctrine/orm` **^3**, `doctrine/doctrine-bundle` **^3**
+- `doctrine/dbal` **^4**, `doctrine/orm` **^3.4**, `doctrine/doctrine-bundle` **^3**
 - Symfony **7.3+ / 8**
 - PostgreSQL with the **PostGIS** extension
 
