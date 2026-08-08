@@ -5,9 +5,16 @@ declare(strict_types=1);
 namespace FundiStadi\PostGISBundle;
 
 use FundiStadi\PostGISBundle\EventListener\SpatialSchemaListener;
+use FundiStadi\PostGISBundle\ORM\Functions\Geography;
+use FundiStadi\PostGISBundle\ORM\Functions\StArea;
 use FundiStadi\PostGISBundle\ORM\Functions\StAsGeoJson;
+use FundiStadi\PostGISBundle\ORM\Functions\StCollectionExtract;
 use FundiStadi\PostGISBundle\ORM\Functions\StGeomFromGeoJson;
 use FundiStadi\PostGISBundle\ORM\Functions\StIntersects;
+use FundiStadi\PostGISBundle\ORM\Functions\StMakeValid;
+use FundiStadi\PostGISBundle\ORM\Functions\StMulti;
+use FundiStadi\PostGISBundle\ORM\Functions\StSimplifyPreserveTopology;
+use FundiStadi\PostGISBundle\ORM\Functions\StUnion;
 use FundiStadi\PostGISBundle\Platform\PostGISMiddleware;
 use FundiStadi\PostGISBundle\Schema\PostGISSchemaManagerFactory;
 use FundiStadi\PostGISBundle\Types\GeographyType;
@@ -55,10 +62,17 @@ final class FundiStadiPostGISBundle extends AbstractBundle
             'orm' => [
                 'dql' => [
                     'string_functions' => [
+                        'Geography' => Geography::class,
                         'ST_AsGeoJSON' => StAsGeoJson::class,
+                        'ST_CollectionExtract' => StCollectionExtract::class,
                         'ST_GeomFromGeoJSON' => StGeomFromGeoJson::class,
+                        'ST_MakeValid' => StMakeValid::class,
+                        'ST_Multi' => StMulti::class,
+                        'ST_SimplifyPreserveTopology' => StSimplifyPreserveTopology::class,
+                        'ST_Union' => StUnion::class,
                     ],
                     'numeric_functions' => [
+                        'ST_Area' => StArea::class,
                         'ST_Intersects' => StIntersects::class,
                     ],
                 ],

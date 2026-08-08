@@ -27,7 +27,7 @@ use Doctrine\ORM\Query\TokenType;
 abstract class AbstractSpatialFunction extends FunctionNode
 {
     /** @var list<Node|string> */
-    private array $arguments = [];
+    protected array $arguments = [];
 
     /** The SQL function name to emit, e.g. 'ST_Area'. */
     abstract protected function functionName(): string;

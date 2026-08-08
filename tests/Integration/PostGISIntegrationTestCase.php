@@ -15,9 +15,16 @@ use Doctrine\ORM\ORMSetup;
 use Doctrine\ORM\Tools\SchemaTool;
 use Doctrine\ORM\Tools\ToolEvents;
 use FundiStadi\PostGISBundle\EventListener\SpatialSchemaListener;
+use FundiStadi\PostGISBundle\ORM\Functions\Geography;
+use FundiStadi\PostGISBundle\ORM\Functions\StArea;
 use FundiStadi\PostGISBundle\ORM\Functions\StAsGeoJson;
+use FundiStadi\PostGISBundle\ORM\Functions\StCollectionExtract;
 use FundiStadi\PostGISBundle\ORM\Functions\StGeomFromGeoJson;
 use FundiStadi\PostGISBundle\ORM\Functions\StIntersects;
+use FundiStadi\PostGISBundle\ORM\Functions\StMakeValid;
+use FundiStadi\PostGISBundle\ORM\Functions\StMulti;
+use FundiStadi\PostGISBundle\ORM\Functions\StSimplifyPreserveTopology;
+use FundiStadi\PostGISBundle\ORM\Functions\StUnion;
 use FundiStadi\PostGISBundle\Platform\PostGISMiddleware;
 use FundiStadi\PostGISBundle\Schema\PostGISSchemaManagerFactory;
 use FundiStadi\PostGISBundle\Types\GeographyType;
@@ -62,8 +69,15 @@ abstract class PostGISIntegrationTestCase extends TestCase
 
         $ormConfig = ORMSetup::createAttributeMetadataConfiguration([__DIR__.'/Fixtures'], true);
         $ormConfig->enableNativeLazyObjects(true); // PHP 8.4+ native lazy objects (no proxy-gen dep)
+        $ormConfig->addCustomStringFunction('Geography', Geography::class);
         $ormConfig->addCustomStringFunction('ST_AsGeoJSON', StAsGeoJson::class);
+        $ormConfig->addCustomStringFunction('ST_CollectionExtract', StCollectionExtract::class);
         $ormConfig->addCustomStringFunction('ST_GeomFromGeoJSON', StGeomFromGeoJson::class);
+        $ormConfig->addCustomStringFunction('ST_MakeValid', StMakeValid::class);
+        $ormConfig->addCustomStringFunction('ST_Multi', StMulti::class);
+        $ormConfig->addCustomStringFunction('ST_SimplifyPreserveTopology', StSimplifyPreserveTopology::class);
+        $ormConfig->addCustomStringFunction('ST_Union', StUnion::class);
+        $ormConfig->addCustomNumericFunction('ST_Area', StArea::class);
         $ormConfig->addCustomNumericFunction('ST_Intersects', StIntersects::class);
 
         $dbalConfig = new DbalConfiguration();

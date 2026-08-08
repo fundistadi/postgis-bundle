@@ -66,7 +66,11 @@ $em->createQuery(
 ```
 
 Column types: `geometry`, `geography`, `point`, `polygon`, `multipolygon`.
-DQL functions: `ST_AsGeoJSON`, `ST_GeomFromGeoJSON`, `ST_Intersects`.
+DQL functions: `ST_AsGeoJSON`, `ST_GeomFromGeoJSON`, `ST_Intersects`, `ST_Union`,
+`ST_SimplifyPreserveTopology`, `ST_MakeValid`, `ST_CollectionExtract`, `ST_Multi`,
+`ST_Area`, and `Geography(g)` (the `::geography` cast, for geodesic measurement:
+`ST_Area(Geography(t.geom))` = m²) — enough to express dissolve-style aggregation
+entirely in DQL.
 Every geometry/geography column gets a `USING gist` index in generated migrations, automatically.
 
 ## Documentation
