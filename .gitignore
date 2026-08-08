@@ -1,6 +1,6 @@
-# Internal authoring aids — never publish (standard is enforced via CI, not shipped)
-/.claude/*
-!/.claude/skills/
+# Internal authoring aids — never publish (shared standards live in the private
+# fundistadi workspace repo one level up)
+/.claude/
 /CLAUDE.md
 
 # Dependencies & build
