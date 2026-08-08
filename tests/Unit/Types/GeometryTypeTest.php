@@ -70,6 +70,12 @@ final class GeometryTypeTest extends TestCase
         self::assertSame('{"type":"Point"}', $this->type->convertToPHPValue('{"type":"Point"}', $this->platform));
     }
 
+    public function testConvertToPhpValueCastsScalarsAndRejectsNonScalars(): void
+    {
+        self::assertSame('42', $this->type->convertToPHPValue(42, $this->platform));
+        self::assertNull($this->type->convertToPHPValue(new \stdClass(), $this->platform));
+    }
+
     public function testMappedDatabaseTypes(): void
     {
         self::assertSame(['geometry'], $this->type->getMappedDatabaseTypes($this->platform));

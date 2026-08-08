@@ -36,6 +36,26 @@ final class SpatialIntegrationTest extends PostGISIntegrationTestCase
         self::assertEqualsWithDelta(-3.2, $decoded['coordinates'][1], 1e-6);
     }
 
+    public function testStAsGeoJsonAcceptsOptionalPrecisionArgument(): void
+    {
+        $thing = new SpatialThing();
+        $thing->geom = '{"type":"Point","coordinates":[36.512345,-3.212345]}';
+        $this->em->persist($thing);
+        $this->em->flush();
+
+        $json = $this->em->createQuery(
+            \sprintf('SELECT ST_AsGeoJSON(t.geom, 2) FROM %s t WHERE t.id = :id', SpatialThing::class),
+        )->setParameter('id', $thing->id)->getSingleScalarResult();
+
+        self::assertIsString($json);
+
+        /** @var array{type: string, coordinates: array<int, float>} $decoded */
+        $decoded = json_decode($json, true, 512, \JSON_THROW_ON_ERROR);
+        self::assertSame('Point', $decoded['type']);
+        self::assertEqualsWithDelta(36.51, $decoded['coordinates'][0], 1e-9);
+        self::assertEqualsWithDelta(-3.21, $decoded['coordinates'][1], 1e-9);
+    }
+
     public function testStIntersectsFiltersInDql(): void
     {
         $thing = new SpatialThing();

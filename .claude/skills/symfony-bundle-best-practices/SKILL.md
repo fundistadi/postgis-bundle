@@ -49,6 +49,14 @@ Condensed from https://symfony.com/doc/current/bundles/best_practices.html — b
 - Parameters: `<alias>.section.setting`. Use semantic config (Configuration class / configure()) for anything non-trivial.
 - Doctrine mapping for bundle-shipped entities: XML in `config/doctrine/` so apps can override (not possible with attributes).
 
+## TDD (binding for this repo)
+
+- **Test-first, always.** No production code without a failing test that demands it: write the test, watch it fail (red), implement, watch it pass (green), refactor.
+- Pure logic (SQL declarations, value conversion, DQL `getSql()`) → table-driven unit tests in `tests/Unit/`, no kernel, no DB. Database behaviour (round-trips, index creation, schema diffs, live `ST_*` calls) → `tests/Integration/` against real PostGIS.
+- Refactors and renames ship on the existing green suite: run it before and after; never change tests and production code in the same step.
+- Coverage gaps in already-shipped code are the one test-after case: add tests that pin current behaviour, without touching production code in the same commit.
+- Green gate before every commit: `composer cs:fix`, then `composer check`.
+
 ## Tests & CI
 
 - PHPUnit, in `tests/`, runnable with plain `phpunit`; ship `phpunit.dist.xml`; ≥95% code coverage; no `AllTests.php`.
