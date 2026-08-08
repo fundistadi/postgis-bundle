@@ -10,7 +10,7 @@ types exchanged as **GeoJSON**, `ST_*` DQL functions, **automatic GiST indexing*
 **typed geometry columns with churn-free migrations** — no hand-written spatial SQL,
 no configuration. Enable the bundle and go.
 
-> Part of the [FundiStadi](https://github.com/fundistadi) toolset.
+> Part of [FundiStadi](https://github.com/fundistadi) — well-crafted Symfony & PostgreSQL tools.
 
 ## Why
 
