@@ -13,7 +13,7 @@
     "require": {
         "php": ">=8.4",
         "doctrine/dbal": "^4.0",
-        "doctrine/orm": "^3.0",
+        "doctrine/orm": "^3.4",
         "doctrine/doctrine-bundle": "^3.0",
         "symfony/framework-bundle": "^7.3 || ^8.0"
     },
