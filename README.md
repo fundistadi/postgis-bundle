@@ -1,9 +1,9 @@
 # PostGIS for Symfony!
 
 [![CI](https://github.com/fundistadi/postgis-bundle/actions/workflows/ci.yml/badge.svg)](https://github.com/fundistadi/postgis-bundle/actions/workflows/ci.yml)
-[![Latest Version](https://img.shields.io/packagist/v/fundistadi/postgis-bundle.svg)](https://packagist.org/packages/fundistadi/postgis-bundle)
-[![Total Downloads](https://img.shields.io/packagist/dt/fundistadi/postgis-bundle.svg)](https://packagist.org/packages/fundistadi/postgis-bundle)
-[![License](https://img.shields.io/packagist/l/fundistadi/postgis-bundle.svg)](LICENSE)
+[![Latest Version](https://img.shields.io/packagist/v/fundistadi/postgis-bundle)](https://packagist.org/packages/fundistadi/postgis-bundle)
+[![Total Downloads](https://img.shields.io/packagist/dt/fundistadi/postgis-bundle)](https://packagist.org/packages/fundistadi/postgis-bundle)
+[![License](https://img.shields.io/packagist/l/fundistadi/postgis-bundle)](LICENSE)
 
 This bundle gives Doctrine ORM 3 / DBAL 4 first-class **PostGIS** support: spatial column
 types exchanged as **GeoJSON**, `ST_*` DQL functions, **automatic GiST indexing**, and
