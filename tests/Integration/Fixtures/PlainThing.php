@@ -15,18 +15,16 @@ namespace FundiStadi\PostGISBundle\Tests\Integration\Fixtures;
 
 use Doctrine\ORM\Mapping as ORM;
 
+/** An entity WITHOUT any geometry column — must be rejected by SpatialEntityRepository. */
 #[ORM\Entity]
-#[ORM\Table(name: 'spatial_thing')]
-class SpatialThing
+#[ORM\Table(name: 'plain_thing')]
+class PlainThing
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]
     public ?int $id = null;
 
-    #[ORM\Column(type: 'geometry')]
-    public ?string $geom = null;
-
     #[ORM\Column(type: 'string', length: 32, nullable: true)]
-    public ?string $label = null;
+    public ?string $name = null;
 }

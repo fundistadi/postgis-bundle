@@ -71,6 +71,22 @@ DQL functions: `ST_AsGeoJSON`, `ST_GeomFromGeoJSON`, `ST_Intersects`, `ST_Union`
 `ST_Area`, and `Geography(g)` (the `::geography` cast, for geodesic measurement:
 `ST_Area(Geography(t.geom))` = m²) — enough to express dissolve-style aggregation
 entirely in DQL.
+
+Prefer no DQL at all? Extend the repository base and the St methods just exist:
+
+```php
+use FundiStadi\PostGISBundle\Repository\SpatialEntityRepository;
+
+final class AreaRepository extends SpatialEntityRepository {}   // that's all
+
+$areas->findStIntersecting($geoJson);        // GiST-backed ST_Intersects
+$areas->stAreaKm2(['source' => 'wdpa']);     // geodesic km², findBy-style criteria
+```
+
+Every method carries the `St` marker — the bundle's signature, never confusable
+with a Doctrine core method. The geometry column is discovered from the entity's
+own metadata; an entity without one is rejected at construction with a teaching
+message.
 Every geometry/geography column gets a `USING gist` index in generated migrations, automatically.
 
 ## Documentation
