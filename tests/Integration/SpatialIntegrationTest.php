@@ -83,4 +83,25 @@ final class SpatialIntegrationTest extends PostGISIntegrationTestCase
 
         self::assertEquals(1, $count);
     }
+
+    public function testStDWithinFiltersByGeodesicDistanceInDql(): void
+    {
+        $thing = new SpatialThing();
+        $thing->geom = '{"type":"Point","coordinates":[36.5,-3.2]}';
+        $this->em->persist($thing);
+        $this->em->flush();
+
+        // ~111 m east of the stored point; geography casts make metres metres.
+        $near = '{"type":"Point","coordinates":[36.501,-3.2]}';
+        $countWithin = fn (float $meters): mixed => $this->em->createQuery(
+            \sprintf(
+                'SELECT COUNT(t.id) FROM %s t'
+                .' WHERE ST_DWithin(Geography(t.geom), Geography(ST_GeomFromGeoJSON(:p)), :m) = true',
+                SpatialThing::class,
+            ),
+        )->setParameter('p', $near)->setParameter('m', $meters)->getSingleScalarResult();
+
+        self::assertEquals(1, $countWithin(150.0));
+        self::assertEquals(0, $countWithin(50.0));
+    }
 }

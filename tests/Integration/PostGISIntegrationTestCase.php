@@ -28,6 +28,7 @@ use FundiStadi\PostGISBundle\ORM\Functions\Geography;
 use FundiStadi\PostGISBundle\ORM\Functions\StArea;
 use FundiStadi\PostGISBundle\ORM\Functions\StAsGeoJson;
 use FundiStadi\PostGISBundle\ORM\Functions\StCollectionExtract;
+use FundiStadi\PostGISBundle\ORM\Functions\StDWithin;
 use FundiStadi\PostGISBundle\ORM\Functions\StGeomFromGeoJson;
 use FundiStadi\PostGISBundle\ORM\Functions\StIntersects;
 use FundiStadi\PostGISBundle\ORM\Functions\StMakeValid;
@@ -81,6 +82,7 @@ abstract class PostGISIntegrationTestCase extends TestCase
         $ormConfig->addCustomStringFunction('Geography', Geography::class);
         $ormConfig->addCustomStringFunction('ST_AsGeoJSON', StAsGeoJson::class);
         $ormConfig->addCustomStringFunction('ST_CollectionExtract', StCollectionExtract::class);
+        $ormConfig->addCustomNumericFunction('ST_DWithin', StDWithin::class);
         $ormConfig->addCustomStringFunction('ST_GeomFromGeoJSON', StGeomFromGeoJson::class);
         $ormConfig->addCustomStringFunction('ST_MakeValid', StMakeValid::class);
         $ormConfig->addCustomStringFunction('ST_Multi', StMulti::class);

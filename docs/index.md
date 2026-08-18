@@ -64,7 +64,8 @@ diff-clean under `doctrine:migrations:diff`.
 
 ## DQL functions
 
-Registered `ST_*` functions: `ST_AsGeoJSON`, `ST_GeomFromGeoJSON`, `ST_Intersects`.
+Registered `ST_*` functions: `ST_AsGeoJSON`, `ST_GeomFromGeoJSON`, `ST_Intersects`, `ST_DWithin`
+(`ST_DWithin(Geography(a), Geography(b), :meters) = true` for geodesic radius filters).
 
 ```php
 $em->createQuery(

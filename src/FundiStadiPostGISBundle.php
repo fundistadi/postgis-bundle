@@ -18,6 +18,7 @@ use FundiStadi\PostGISBundle\ORM\Functions\Geography;
 use FundiStadi\PostGISBundle\ORM\Functions\StArea;
 use FundiStadi\PostGISBundle\ORM\Functions\StAsGeoJson;
 use FundiStadi\PostGISBundle\ORM\Functions\StCollectionExtract;
+use FundiStadi\PostGISBundle\ORM\Functions\StDWithin;
 use FundiStadi\PostGISBundle\ORM\Functions\StGeomFromGeoJson;
 use FundiStadi\PostGISBundle\ORM\Functions\StIntersects;
 use FundiStadi\PostGISBundle\ORM\Functions\StMakeValid;
@@ -82,6 +83,7 @@ final class FundiStadiPostGISBundle extends AbstractBundle
                     ],
                     'numeric_functions' => [
                         'ST_Area' => StArea::class,
+                        'ST_DWithin' => StDWithin::class,
                         'ST_Intersects' => StIntersects::class,
                     ],
                 ],
